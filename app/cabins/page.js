@@ -1,10 +1,19 @@
-import Navigation from "../components/Navigation";
+import Counter from "../components/Counter";
 
-export default function pages() {
+export default async function pages() {
+  const url = "https://jsonplaceholder.typicode.com/users";
+  const res = await fetch(url);
+  const data = await res.json();
+
   return (
     <div>
-      <Navigation />
+      <Counter user={data} />
       <h1>Inside Cabin pages</h1>
+      {data.map((user) => (
+        <ul>
+          <li>{user.name}</li>
+        </ul>
+      ))}
     </div>
   );
 }
