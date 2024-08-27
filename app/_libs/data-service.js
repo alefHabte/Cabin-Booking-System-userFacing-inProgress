@@ -40,6 +40,8 @@ export const getCabins = async function () {
     .select("id, name, maxCapacity, regularPrice, discount, image")
     .order("name");
   console.log("Supabase response:", { data, error });
+  // For testing
+  await new Promise((res) => setTimeout(res, 1000));
 
   if (error) {
     console.error(error);
